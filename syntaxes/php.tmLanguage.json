@@ -5,8 +5,12 @@
       "begin": "(<\\?php|<\\?)",
       "end": "(\\?>)",
       "patterns": [
-        { "include": "#php-keywords" },
-        { "include": "#php-echo-html" }
+        {
+          "include": "#php-keywords"
+        },
+        {
+          "include": "#php-echo-html"
+        }
       ]
     }
   ],
@@ -35,11 +39,10 @@
             "1": { "name": "keyword.operator.echo.php" },
             "2": { "name": "punctuation.definition.string.begin.php" }
           },
-          "end": "(\\2)\\s*;",
+          "end": "(['\"];|;)",
           "endCaptures": {
             "1": { "name": "punctuation.definition.string.end.php" }
           },
-          "contentName": "string.quoted.php",
           "patterns": [
             {
               "include": "#html-tags"
@@ -59,24 +62,24 @@
     "html-tags": {
       "patterns": [
         {
-          "begin": "(<)([a-zA-Z][a-zA-Z0-9-]*)",
+          "begin": "<([a-zA-Z][a-zA-Z0-9-]*)",
           "beginCaptures": {
-            "1": { "name": "punctuation.definition.tag.html" },
-            "2": { "name": "entity.name.tag.html" }
+            "1": { "name": "entity.name.tag.html" }
           },
           "end": "(\\/?>)",
           "endCaptures": {
             "1": { "name": "punctuation.definition.tag.html" }
           },
           "patterns": [
-            { "include": "#html-attributes" }
+            {
+              "include": "#html-attributes"
+            }
           ]
         },
         {
-          "begin": "(<\\/)([a-zA-Z][a-zA-Z0-9-]*)",
+          "begin": "<\\/([a-zA-Z][a-zA-Z0-9-]*)",
           "beginCaptures": {
-            "1": { "name": "punctuation.definition.tag.html" },
-            "2": { "name": "entity.name.tag.html" }
+            "1": { "name": "entity.name.tag.html" }
           },
           "end": "(>)",
           "endCaptures": {
@@ -89,7 +92,7 @@
       "patterns": [
         {
           "name": "entity.other.attribute-name.html",
-          "match": "\\b[a-zA-Z-]+(?=\\=)"
+          "match": "\\b([a-zA-Z-]+)(=)"
         },
         {
           "name": "string.quoted.double.html",
