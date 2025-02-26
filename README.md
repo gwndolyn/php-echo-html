@@ -1,6 +1,5 @@
 # PHP HTML Echo Helper
 
-![Logo](https://www.logotypes101.com/logos/203/272663FA02DE2DAA2BBAE2FC39F14783/php.png)  
 [![Version](https://img.shields.io/badge/version-0.0.1-blue.svg)](https://marketplace.visualstudio.com/items?itemName=Gwendolyn.php-echo-html)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/Gwendolyn.php-echo-html)](https://marketplace.visualstudio.com/items?itemName=Gwendolyn.php-echo-html)
