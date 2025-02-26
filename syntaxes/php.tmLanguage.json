@@ -1,46 +1,124 @@
 {
-    "scopeName": "source.php",
-    "patterns": [
-      {
-        "include": "text.html.basic"
-      },
-      {
-        "include": "source.php.embedded.block"
-      },
-      {
-        "begin": "(echo|print)\\s*(['\"])",
-        "beginCaptures": {
-          "1": { "name": "keyword.operator.echo.php" },
-          "2": { "name": "punctuation.definition.string.begin.php" }
+  "scopeName": "source.php",
+  "patterns": [
+    {
+      "begin": "(<\\?php|<\\?)",
+      "end": "(\\?>)",
+      "patterns": [
+        {
+          "include": "#php-keywords"
         },
-        "end": "(['\"];)",
-        "endCaptures": {
-          "1": { "name": "punctuation.definition.string.end.php" }
+        {
+          "include": "#php-echo-html"
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "php-keywords": {
+      "patterns": [
+        {
+          "match": "\\b(function|return|echo|print|if|else|elseif|switch|case|break|continue|foreach|for|while|do|default)\\b",
+          "name": "keyword.control.php"
         },
-        "patterns": [
-          {
-            "begin": "['\"]",
-            "end": "['\"]",
-            "patterns": [
-              {
-                "include": "text.html.basic"
-              },
-              {
-                "match": "\\$[a-zA-Z_][a-zA-Z0-9_]*",
-                "name": "variable.other.php"
-              },
-              {
-                "match": "\\.",
-                "name": "keyword.operator.concatenation.php"
-              }
-            ]
+        {
+          "match": "\\b(true|false|null)\\b",
+          "name": "constant.language.php"
+        },
+        {
+          "match": "\\$[a-zA-Z_][a-zA-Z0-9_]*",
+          "name": "variable.other.php"
+        }
+      ]
+    },
+    "php-echo-html": {
+      "patterns": [
+        {
+          "begin": "(echo|print)\\s+(['\"])",
+          "beginCaptures": {
+            "1": { "name": "keyword.operator.echo.php" },
+            "2": { "name": "punctuation.definition.string.begin.php" }
+          },
+          "end": "(['\"];|;)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.string.end.php" }
+          },
+          "patterns": [
+            {
+              "include": "#html-tags"
+            },
+            {
+              "match": "\\$[a-zA-Z_][a-zA-Z0-9_]*",
+              "name": "variable.other.php"
+            },
+            {
+              "match": "\\.",
+              "name": "keyword.operator.concatenation.php"
+            }
+          ]
+        }
+      ]
+    },
+    "html-tags": {
+      "patterns": [
+        {
+          "begin": "<([a-zA-Z][a-zA-Z0-9-]*)",
+          "beginCaptures": {
+            "1": { "name": "entity.name.tag.html" }
+          },
+          "end": "(\\/?>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.html" }
+          },
+          "patterns": [
+            {
+              "include": "#html-attributes"
+            }
+          ]
+        },
+        {
+          "begin": "<\\/([a-zA-Z][a-zA-Z0-9-]*)",
+          "beginCaptures": {
+            "1": { "name": "entity.name.tag.html" }
+          },
+          "end": "(>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.html" }
           }
-        ]
-      }
-    ],
-    "repository": {},
-    "injections": {},
-    "fileTypes": ["php"],
-    "name": "PHP with HTML in echo"
-  }
-  
+        }
+      ]
+    },
+    "html-attributes": {
+      "patterns": [
+        {
+          "name": "entity.other.attribute-name.html",
+          "match": "\\b([a-zA-Z-]+)(=)"
+        },
+        {
+          "name": "string.quoted.double.html",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "match": "\\$[a-zA-Z_][a-zA-Z0-9_]*",
+              "name": "variable.other.php"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.html",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "match": "\\$[a-zA-Z_][a-zA-Z0-9_]*",
+              "name": "variable.other.php"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "fileTypes": ["php"],
+  "name": "PHP with Enhanced HTML in Echo"
+}
