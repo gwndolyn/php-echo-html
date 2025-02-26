@@ -39,6 +39,7 @@
           "endCaptures": {
             "1": { "name": "punctuation.definition.string.end.php" }
           },
+          "contentName": "string.quoted.php",
           "patterns": [
             {
               "include": "#html-tags"
