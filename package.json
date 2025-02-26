@@ -1,10 +1,11 @@
 {
   "name": "php-echo-html",
-  "displayName": "php echo html",
+  "displayName": "PHP HTML Echo Helper",
   "description": "Syntax highlighting and IntelliSense for HTML inside PHP echo statements",
-  "version": "0.0.1",
+  "version": "0.0.5",
+  "publisher": "Gwendolyn",
   "engines": {
-    "vscode": "^1.97.0"
+    "vscode": "^1.96.0"
   },
   "categories": [
     "Other"
@@ -13,25 +14,27 @@
     "onLanguage:php"
   ],
   "main": "./dist/extension.js",
-
-
   "contributes": {
-  "languages": [
-    {
-      "id": "php",
-      "extensions": [".php"],
-      "aliases": ["PHP", "php"]
-    }
-  ],
-  "grammars": [
-    {
-      "language": "php",
-      "scopeName": "source.php",
-      "path": "./syntaxes/php.tmLanguage.json"
-    }
-  ]
-},
-
+    "languages": [
+      {
+        "id": "php",
+        "extensions": [
+          ".php"
+        ],
+        "aliases": [
+          "PHP",
+          "php"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "php",
+        "scopeName": "source.php",
+        "path": "./syntaxes/php.tmLanguage.json"
+      }
+    ]
+  },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
@@ -41,19 +44,18 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.97.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
+    "@types/vscode": "^1.96.0",
     "@typescript-eslint/eslint-plugin": "^8.22.0",
     "@typescript-eslint/parser": "^8.22.0",
-    "eslint": "^9.19.0",
-    "typescript": "^5.7.3",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.19.0",
+    "typescript": "^5.7.3"
   },
   "repository": {
-  "type": "git",
-  "url": "https://github.com/gwndolyn/php-echo-html.git"
-}
-  
+    "type": "git",
+    "url": "https://github.com/gwndolyn/php-echo-html.git"
+  }
 }
