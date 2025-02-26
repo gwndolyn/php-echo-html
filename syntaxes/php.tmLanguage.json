@@ -1,0 +1,26 @@
+{
+    "scopeName": "source.php",
+    "patterns": [
+      {
+        "begin": "(echo\\s+['\"])(.*)(['\"];)",
+        "beginCaptures": {
+          "1": { "name": "keyword.operator.echo.php" }
+        },
+        "end": "(['\"];)",
+        "endCaptures": {
+          "1": { "name": "punctuation.terminator.statement.php" }
+        },
+        "patterns": [
+          {
+            "include": "text.html.basic"
+          }
+        ]
+      }
+    ],
+    "repository": {},
+    "injections": {},
+
+    "fileTypes": ["php"],
+    "name": "PHP with HTML in echo"
+  }
+  
