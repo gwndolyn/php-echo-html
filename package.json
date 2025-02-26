@@ -2,7 +2,7 @@
   "name": "php-echo-html",
   "displayName": "PHP HTML Echo Helper",
   "description": "Syntax highlighting and IntelliSense for HTML inside PHP echo statements",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "publisher": "Gwendolyn",
   "engines": {
     "vscode": "^1.96.0"
